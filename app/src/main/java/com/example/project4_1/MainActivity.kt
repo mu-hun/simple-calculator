@@ -12,7 +12,7 @@ import android.widget.*
 
 class MainActivity : AppCompatActivity() {
 
-    private fun calculate(char: Char, A: Int, B: Int): Int {
+    private fun calculate(char: Char, A: Float, B: Float): Float {
         if (char == '+')
             return A + B
         if (char == '-')
@@ -57,7 +57,10 @@ class MainActivity : AppCompatActivity() {
                 return toastShort("A and B is not valid")
             if (a == null) return toastShort("A is not valid")
             if (b == null) return toastShort("B is not valid")
-            resultView.text = calculate(char, a, b).toString()
+//
+            var text = calculate(char, a.toFloat(), b.toFloat()).toString()
+            if (text.contains(".0")) text = text.replace(".0", "")
+            resultView.text = text
         }
 
         plus.setOnClickListener { wrapper('+') }
