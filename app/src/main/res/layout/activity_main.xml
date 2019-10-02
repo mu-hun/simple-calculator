@@ -9,7 +9,7 @@
     <TextView
             android:text="@string/result"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/result" android:textSize="30sp"
+            android:layout_height="wrap_content" android:id="@+id/resultView" android:textSize="30sp"
             android:textColor="@color/colorAccent" android:layout_marginTop="30dp" android:textAlignment="center"/>
     <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"

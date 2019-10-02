@@ -3,12 +3,12 @@ package com.example.project4_1
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,25 +41,16 @@ class MainActivity : AppCompatActivity() {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean { closeKeyboard()
                 return v?.performClick() ?: true }})
 
-        val resultView: TextView = findViewById(R.id.result)
-
-        val inputA: TextInputEditText = findViewById(R.id.inputA)
-        val inputB: TextInputEditText = findViewById(R.id.inputB)
-
-        val plus: Button = findViewById(R.id.plus)
-        val minus: Button = findViewById(R.id.minus)
-        val multiply: Button = findViewById(R.id.multiply)
-        val division: Button = findViewById(R.id.division)
-
         fun wrapper(char: Char) {
             val (a, b) = toIntOrNullPair(inputA, inputB)
             if (a == null && b == null)
                 return toastShort("A and B is not valid")
             if (a == null) return toastShort("A is not valid")
             if (b == null) return toastShort("B is not valid")
-//
+
             var text = calculate(char, a.toFloat(), b.toFloat()).toString()
             if (text.contains(".0")) text = text.replace(".0", "")
+            if (text == "0") return toastShort("result is 0")
             resultView.text = text
         }
 
